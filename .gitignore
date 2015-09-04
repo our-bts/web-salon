@@ -10,3 +10,6 @@ debug/
 *.orig
 *.zip
 .project
+
+# 排除业务代码
+vendor-portal
