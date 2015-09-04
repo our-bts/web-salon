@@ -1,0 +1,12 @@
+node_modules/
+bower_components/
+.idea/
+debug/
+dist/
+debug/
+/*.njspro
+/*.sln
+/*.suo
+*.orig
+*.zip
+.project

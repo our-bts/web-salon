@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CMD Demo</title>
+</head>
+<body>
+  <script src="./bower_components/seajs/dist/sea.js"></script>
+  <script>
+    seajs.config({
+      base: './js'
+    });
+  </script>
+  <script>
+    seajs.use('mod2', function(mod1){
+      mod1.alert('xxx');
+    });
+  </script>
+</body>
+</html>

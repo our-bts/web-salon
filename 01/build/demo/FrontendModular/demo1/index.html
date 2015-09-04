@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <div ng-view=""></div>
+  <ul>
+    <li><a href="index.html">Go to index.</a></li>
+    <li><a href="#c1">Go to c1.</a></li>
+    <li><a href="#c2">Go to c2.</a></li>
+  </ul>
+  <script src="js/jquery-2.1.4.js"></script>
+  <script>
+    window.onhashchange = function(){
+      var hash = location.hash;
+      switch(hash){
+        case '#c1':
+          X.changeModule('mod1');
+          break;
+        case '#c2':
+          X.changeModule('mod2');
+          break;
+      }
+    };
+
+    var $ngView = $('[ng-view]');
+
+    var X = {
+      ajax: function(url, dataType, callback){
+        $.ajax({
+          type: 'get',
+          url: url,
+          dataType: dataType
+        }).done(function(data){
+          callback(data);
+        }).error(function(err){
+          console.log(err);
+        });
+      },
+      loadHtml: function(moduleName){
+        this.ajax(moduleName + '/index.html', 'html', function(html){
+          $ngView.html(html);
+        });
+      },
+      loadJs: function(moduleName){
+        $('script[name="mod"]').remove();
+        $('<script />').attr({
+          src: moduleName + '/index.js',
+          name: 'mod'
+        }).appendTo($('body'));
+      },
+      loadCss: function(moduleName){
+        $('link[name="mod"]').remove();
+        $('<link />').attr({
+          rel: 'stylesheet',
+          href: moduleName + '/index.css',
+          name: 'mod'
+        }).appendTo($('head'));
+      },
+      changeModule: function(moduleName){
+        this.loadCss(moduleName);
+        this.loadHtml(moduleName);
+        this.loadJs(moduleName);
+      }
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+exports.modName = 'Mod2';
