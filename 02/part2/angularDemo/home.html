@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="css/vendor/bootstrap.css">
+    <link rel="stylesheet" href="css/vendor/bootstrap-social.css">
+    <link rel="stylesheet" href="css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="css/vendor/animate.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes/blue.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/angular.js"></script>
+</head>
+<body ng-controller="FrameworkCtrl as fc">
+    <header>
+        <div class="top-bar">
+            <div class="container no-padding">
+                <div class="row no-margin">
+                    <div class="col-sm-7 hidden-xs"></div>
+                    <div class="col-sm-5 text-right no-padding-right">
+                        <ul class="topbar-list list-inline" ng-if="!fc.__hasLogged">
+                            <li><a ng-click="fc.openModal()">Login</a></li>
+                            <li><a href="pages-forms-register-login.html">Register</a></li>
+                            <li>
+                                <a class="btn btn-social-icon btn-rw btn-primary btn-xs">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                <a class="btn btn-social-icon btn-rw btn-primary btn-xs">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                                <a class="btn btn-social-icon btn-rw btn-primary btn-xs">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="topbar-list list-inline" ng-if="fc.__hasLogged">
+                            <li>Welcome, {{fc.user.UserName}}</li>
+                            <li><a ng-click="fc.doLogout()">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" modal-box="fc.isModalOpen" id="login" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="loginLabel">Login</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="username">User Name</label>
+                                <input type="text" class="form-control" id="username"  placeholder="Enter user name" ng-model="fc.user.UserName">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Password" ng-model="fc.user.Password">
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="fc.rememberMe"> Remember Me
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-rw btn-primary" ng-click="fc.doLogin()">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar">
+            <div class="container no-padding">
+                <div class="navbar-header">
+                    <a href="#" class="navbar-brand">
+                        <img src="images/logo.png" alt="EaaS">
+                    </a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <nav class="navbar-collapse navHeaderCollapse collapse" role="navigation">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown active">
+                            <a href="#" class="dropdown-toggle">&nbsp;Home&nbsp;</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" data-delay="300" data-close-others="true">Management<span class="fa fa-angle-down dropdown-arrow"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Organization</a></li>
+                                <li><a href="#">Partner</a></li>
+                                <li><a href="#">Agreement</a></li>
+                                <li><a href="#">Account</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" data-delay="300" data-close-others="true">Resource<span class="fa fa-angle-down dropdown-arrow"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Schema</a></li>
+                                <li><a href="#">Mapper</a></li>
+                                <li><a href="#">Transmission</a></li>
+                                <li><a href="#">Certificate</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" data-delay="300" data-close-others="true">Monitor<span class="fa fa-angle-down dropdown-arrow"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Statistics</a></li>
+                                <li><a href="#">Message</a></li>
+                                <li><a href="#">Action Log</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Help</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle dropdown-form-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-user">
+                                <li id="dropdownForm">
+                                    <div class="dropdown-form">
+                                        <form class="form-default form-inline p15">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control search-input" placeholder="Search...">
+                                                <span class="input-group-btn">
+                                                            <button class="btn btn-rw btn-primary search-btn" type="button">Go!</button>
+                                                        </span>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <section class="carousel">
+        <div id="carouselHome" class="carousel slide carousel-fade" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carouselHome" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselHome" data-slide-to="1" class=""></li>
+                <li data-target="#carouselHome" data-slide-to="2" class=""></li>
+            </ol>
+            <div class="carousel-inner">
+                <!-- Begin Item 1 -->
+                <div class="item active">
+                    <div class="background-main skrollable skrollable-between">
+                        <img class="carousel-bg op-1" src="images/bg1.jpg">
+                        <div class="container">
+                            <div class="row carousel-content center-vertically-right">
+                                <!-- Content -->
+                                <div class="fadeInRight animated" data-animation="fadeInRight">
+                                    <div class="carousel-description col-sm-5">
+                                        <h3 class="heavy text-white hidden-xs"><span class="carousel-title-bgclear">Partner</span></h3>
+                                        <h3 class="heavy text-white hidden-xs"><span class="carousel-title-bgclear">Agreement</span></h3>
+                                        <h3 class="heavy text-white hidden-xs"><span class="carousel-title-bgclear">Monitor</span></h3>
+                                        <p class="">EaaS (EDI as a Service) exchanges EDI documents between your legacy systems and trading partners.</p>
+                                    </div>
+                                </div>
+                                <div class="fadeInLeft animated" data-animation="fadeInLeft">
+                                    <div class="col-sm-6 col-sm-offset-1">
+                                        <img src="images/carousel-1.png" class="img-responsive carousel-image" alt="Responsive Showcase">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Item 1 -->
+                <!-- Begin Item 2 -->
+                <div class="item">
+                    <div class="skrollable skrollable-between">
+                        <img class="carousel-bg op-4" src="images/bg2.jpg">
+                        <div class="container">
+                            <div class="row carousel-content center-vertically-left">
+                                <!-- Img -->
+                                <div class="fadeInLeft animated" data-animation="fadeInLeft">
+                                    <div class="col-sm-6 hidden-xs">
+                                        <img src="images/carousel-2.png" class="img-responsive carousel-image" alt="Responsive Showcase">
+                                    </div>
+                                </div>
+                                <!-- Content -->
+                                <div class="fadeInRight animated" data-animation="fadeInRight">
+                                    <div class="carousel-description mt10 col-sm-5 col-sm-offset-1">
+                                        <h4 class="heavy text-white"><span class="carousel-title-bg">Service</span></h4>
+                                        <h4 class="heavy text-white"><span class="carousel-title-bg">Professional</span></h4>
+                                        <h4 class="heavy text-white"><span class="carousel-title-bg">Efficient</span></h4>
+                                        <p>Transform business data between different formats (e.g. EDI X12
+                                            <-> XML and etc.)</p>
+                                        <a href="features.html" class="btn btn-rw btn-primary">
+                                                    Features &nbsp;&nbsp;<span class="ion-ios7-arrow-right"></span>
+                                                </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Item 2 -->
+                <!-- Begin Item 3 -->
+                <div class="item">
+                    <div class="skrollable skrollable-between">
+                        <img class="carousel-bg op-8" src="images/bg3.jpg">
+                        <div class="container">
+                            <div class="row carousel-content center-vertically-right">
+                                <div class="fadeInUpBig animated" data-animation="fadeInUpBig">
+                                    <div class="carousel-description col-sm-8 col-sm-offset-2 text-center">
+                                        <!-- Content -->
+                                        <span class="fa fa-exchange fa-4x text-white"></span>
+                                        <h2 class="heavy text-white"><span class="carousel-title-bgclear">EaaS</span></h2> Support multiple transmission protocols (e.g. AS2, FTP, Message Queue and etc.)
+                                        <br> Comprehensive functionalities for EDI document definition, transformation and monitoring.
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Item 3 -->
+            </div>
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carouselHome" role="button" data-slide="prev">
+                <span class="fa fa-angle-left carousel-arrow-left" aria-hidden="true"></span>
+            </a>
+            <a class="right carousel-control" href="#carouselHome" role="button" data-slide="next">
+                <span class="fa fa-angle-right carousel-arrow-right" aria-hidden="true"></span>
+            </a>
+        </div>
+    </section>
+    <section class="background-light-grey pt60 pb60 border-bottom">
+        <div class="container">
+            <div class="row">
+                <!-- Content 1 -->
+                <div class="col-sm-4 fadeInUp-animated  text-center fadeInUp animated">
+                    <span class="fa fa-group bordered-icon-sm"></span>
+                    <h4 class="mt15">Partner</h4>
+                    <p class="p15xs no-margin">Create local partner and trading partner.Manage contact information for partners.Unified and convenient information management.</p>
+                </div>
+                <!-- Content 2 -->
+                <div class="col-sm-4 fadeInUp-animated text-center mt20-xs fadeInUp animated">
+                    <span class="fa fa-check-square-o bordered-icon-sm"></span>
+                    <h4 class="mt15">Agreement</h4>
+                    <p class="p15xs no-margin">Professional EDI X12 Standard configuration.Partnership management.Transmission channel setup and management.</p>
+                </div>
+                <!-- Content 3 -->
+                <div class="col-sm-4 fadeInUp-animated text-center mt20-xs fadeInUp animated">
+                    <span class="fa fa-laptop bordered-icon-sm"></span>
+                    <h4 class="mt15">Monitor</h4>
+                    <p class="p15xs no-margin">Powerful GUI for data processing statistics.Interactive monitoring and analysising.System log summary and management</p>
+                </div>
+            </div>
+        </div>
+        <!-- /container -->
+    </section>
+    <section class="background-light-grey pt40 pb40 border-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 text-center">
+                    <img src="images/home-1.png" alt="EaaS">
+                </div>
+                <div class="col-sm-8">
+                    <div class="heading mb20 mt30-xs">
+                        <h4><i class="fa fa-flag mr15"></i>Why EaaS</h4></div>
+                    <p><a class="tooltip-active" data-toggle="tooltip" data-placement="top" title="EaaS" data-original-title="Tooltip on top">EDI as a Service</a> offers a comprehensive set of fully outsourced EDI services that helps companies to take full advantage of their EDI investment. With EaaS, companies are able to optimize the efficiency, reliability, and reach of their electronic supply chain while reducing costs, infrastructure and overhead. Future they also have the ability to let existing or new partners register and integrate with their own EDI smoothly and rapidly.</p>
+                    <!-- List -->
+                    <ul class="list-arrow-2-color no-margin">
+                        <li><small>EaaS Portal -  user interface of the EaaS platform</small></li>
+                        <li><small>EaaS Core API - supports EaaS Portal for management of resources and organization units, manages relationship between partners in the EaaS platform</small></li>
+                        <li><small>EaaS Runtime - current runtime implementation was based on Microsoft BizTalk Server 2010</small></li>
+                        <li><small>Load balance - one organization was hosted on one BizTalk Server by default, however, in current design, multiple host servers and load balancing was also supported.</small></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pt40 mb40 border-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="heading mb30">
+                        <h4><i class="fa fa-globe mr15"></i>Cooperative Corporation</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2 col-xs-4 mb30-xs">
+                    <a href="#"><img src="images/company/amazon.png" class="img-responsive clients-img" alt="Client 1"></a>
+                </div>
+                <div class="col-sm-2 col-xs-4 mb30-xs">
+                    <a href="#"><img src="images/company/ebay.png" class="img-responsive clients-img" alt="Client 2"></a>
+                </div>
+                <div class="col-sm-2 col-xs-4 mb30-xs">
+                    <a href="#"><img src="images/company/rosewill.png" class="img-responsive clients-img" alt="Client 3"></a>
+                </div>
+                <div class="col-sm-2 col-xs-4">
+                    <a href="#"><img src="images/company/ingram.png" class="img-responsive clients-img" alt="Client 4"></a>
+                </div>
+                <div class="col-sm-2 col-xs-4">
+                    <a href="#"><img src="images/company/fedex.png" class="img-responsive clients-img" alt="Client 5"></a>
+                </div>
+                <div class="col-sm-2 col-xs-4">
+                    <a href="#"><img src="images/company/techdata.png" class="img-responsive clients-img" alt="Client 6"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="heading-footer">
+                        <h4>About</h4></div>
+                    <p>EDI as a Service offers a comprehensive set of fully outsourced EDI services that helps companies to take full advantage of their EDI investment. </p>
+                </div>
+                <div class="col-sm-4 mg25-xs">
+                    <div class="heading-footer">
+                        <h4>Social Networks</h4></div>
+                    <a class="btn btn-social-icon btn-twitter btn-lg">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a class="btn btn-social-icon btn-instagram btn-lg">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                    <a class="btn btn-social-icon btn-facebook btn-lg">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a class="btn btn-social-icon btn-vimeo btn-lg">
+                        <i class="fa fa-vimeo-square"></i>
+                    </a>
+                    <a class="btn btn-social-icon btn-linkedin btn-lg">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                    <a class="btn btn-social-icon btn-google-plus btn-lg">
+                        <i class="fa fa-google-plus"></i>
+                    </a>
+                    <a class="btn btn-social-icon btn-adn btn-lg">
+                        <i class="fa fa-adn"></i>
+                    </a>
+                    <a class="btn btn-social-icon btn-bitbucket btn-lg">
+                        <i class="fa fa-bitbucket"></i>
+                    </a>
+                    <a class="btn btn-social-icon btn-tumblr btn-lg">
+                        <i class="fa fa-tumblr"></i>
+                    </a>
+                    <a class="btn btn-social-icon btn-flickr btn-lg">
+                        <i class="fa fa-flickr"></i>
+                    </a>
+                </div>
+                <div class="col-sm-4 mg25-xs">
+                    <div class="heading-footer">
+                        <h4>Contact us</h4></div>
+                    <p><span class="ion-home footer-info-icons"></span><small class="address"> TianFu Software park ChengDu Newegg- China</small></p>
+                    <p><span class="ion-email footer-info-icons"></span><small class="address"><a href="mailto:eaas@newegg.com">eaas@newegg.com</a></small></p>
+                    <p><span class="ion-ios7-telephone footer-info-icons"></span><small class="address">+123456</small></p>
+                </div>
+            </div>
+            <div class="row">
+                <hr class="dark-hr">
+                <div class="col-sm-11 col-xs-10">
+                    <p class="copyright">© 2015 Newegg inc. All rights reserved. Create by <b>Seven</b>.</p>
+                </div>
+                <div class="col-sm-1 col-xs-2 text-right">
+                    <a href="#" class="scroll-top">
+                        <div class="footer-scrolltop-holder"><span class="fa fa-arrow-up footer-scrolltop"></span></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
