@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello,Angular</title>
+  <style type="text/css">
+    @charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}
+  </style>
+</head>
+<body class="ng-cloak">
+  <h1>The first angular application.</h1>
+  <hr>
+  <section ng-controller="HelloCtrl">
+    User name: <input type="text" ng-model="username"> <span>Hello,{{username}}.</span>
+  </section>
+  <script src="jquery-2.1.4.js"></script>
+  <script src="angular.js"></script>
+  <script>
+    angular.module('app', [])
+    .controller('HelloCtrl', ['$scope', function($scope){
+      $scope.username = 'Angular';
+    }]);
+    angular.bootstrap(document, ['app']);
+  </script>
+</body>
+</html>

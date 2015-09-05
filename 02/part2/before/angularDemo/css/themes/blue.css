@@ -1,0 +1,123 @@
+a {
+    color: #3498db;
+    cursor: pointer;
+}
+
+a:hover {
+    color: #3498db;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.background-main {
+    background-color: #3498db !important;
+}
+
+ul.list-arrow-color li:before {
+    color: #3498db;
+}
+
+ul.list-arrow-2-color li:before {
+    color: #3498db;
+}
+
+.btn-rw.btn-primary {
+    background-color: #3498db;
+    -webkit-box-shadow: 0px 2px 0px rgba(52, 152, 219, 0.73);
+    -moz-box-shadow: 0px 2px 0px rgba(52, 152, 219, 0.73);
+    box-shadow: 0px 2px 0px rgba(52, 152, 219, 0.73);
+}
+
+.btn-rw.btn-primary:hover,
+.btn-rw.btn-primary:focus {
+    background-color: #2980b9;
+    -webkit-box-shadow: 0px 2px 0px #3498db;
+    -moz-box-shadow: 0px 2px 0px #3498db;
+    box-shadow: 0px 2px 0px #3498db;
+}
+
+.bordered-icon-sm {
+    color: #3498db;
+}
+
+.bordered-icon-sm:hover,
+.bordered-icon-sm:focus {
+    background-color: #3498db;
+}
+
+.bordered-icon-static-sm {
+    color: #3498db;
+}
+
+.bordered-icon-color {
+    background-color: #3498db;
+}
+
+.bordered-icon-color:hover,
+.bordered-icon-color:focus {
+    color: #fff;
+}
+
+.navbar-brand {
+    color: #3498db;
+}
+
+.navbar-toggle:hover {
+    border: 1px solid #3498db;
+    background-color: #3498db;
+}
+
+.navbar ul.nav a:hover {
+    background-color: #3498db;
+}
+
+.navbar .nav li.active a {
+    background-color: #3498db;
+}
+
+.navbar .navbar-nav .open .dropdown-menu>li>a:hover {
+    background-color: #3498db;
+}
+
+.navbar .dropdown-menu {
+    border-top: 1px solid #3498db;
+    border-bottom: 2px solid #3498db;
+}
+
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+    background-color: #3498db !important;
+}
+
+.carousel-title-bg {
+    background-color: #3498db;
+}
+
+.heading h1,
+.heading h2,
+.heading h3,
+.heading h4,
+.heading h5,
+.heading h6 {
+    border-bottom: 2px solid #3498db;
+}
+
+.modal-header {
+    background-color: #3498db;
+}
+
+.topbar-list li a:hover {
+    color: #3498db;
+}
+
+.heading-footer h2,
+.heading-footer h3,
+.heading-footer h4 {
+    border-bottom: 2px solid #3498db;
+}
+
+.footer-scrolltop-holder:hover {
+    background-color: #3498db;
+}
+

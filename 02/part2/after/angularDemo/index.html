@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Home</title>
+        <link rel="stylesheet" href="css/vendor/bootstrap.css">
+        <link rel="stylesheet" href="css/vendor/bootstrap-social.css">
+        <link rel="stylesheet" href="css/vendor/font-awesome.css">
+        <link rel="stylesheet" href="css/vendor/animate.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/themes/blue.css">
+        <script src="js/jquery.js"></script>
+        <script src="js/angular.js"></script>
+        <script src="js/angular-route.js"></script>
+    </head>
+    <body ng-controller="FrameworkCtrl as fc">
+        <header>
+            <div class="top-bar">
+                <div class="container no-padding">
+                    <div class="row no-margin">
+                        <div class="col-sm-7 hidden-xs"></div>
+                        <div class="col-sm-5 text-right no-padding-right">
+                            <ul class="topbar-list list-inline" ng-if="!fc.__hasLogged">
+                                <li><a ng-click="fc.openModal()">Login</a></li>
+                                <li><a href="pages-forms-register-login.html">Register</a></li>
+                                <li>
+                                    <a class="btn btn-social-icon btn-rw btn-primary btn-xs">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                    <a class="btn btn-social-icon btn-rw btn-primary btn-xs">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                    <a class="btn btn-social-icon btn-rw btn-primary btn-xs">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="topbar-list list-inline" ng-if="fc.__hasLogged">
+                                <li>Welcome, {{fc.user.UserName}}</li>
+                                <li><a ng-click="fc.doLogout()">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" modal-box="fc.isModalOpen" id="login" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" id="loginLabel">Login</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form" name="loginForm">
+                                <div class="form-group">
+                                    <label for="username">User Name</label>
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter user name" ng-model="fc.user.UserName" required>
+                                    <label class="text-danger" ng-show="loginForm.username.$invalid">Please enter your user name.</label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="fc.user.Password" required>
+                                    <label class="text-danger" ng-show="loginForm.password.$invalid">Please enter your password.</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="fc.rememberMe"> Remember Me
+                                    </label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" ng-disabled="loginForm.$invalid" class="btn btn-rw btn-primary" ng-click="fc.doLogin()">Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar">
+                <div class="container no-padding">
+                    <div class="navbar-header">
+                        <a href="#" class="navbar-brand">
+                            <img src="images/logo.png" alt="EaaS">
+                        </a>
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <nav class="navbar-collapse navHeaderCollapse collapse" role="navigation">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown active">
+                                <a href="/" class="dropdown-toggle">&nbsp;Home&nbsp;</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" data-delay="300" data-close-others="true">Management<span class="fa fa-angle-down dropdown-arrow"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Organization</a></li>
+                                    <li><a href="#">Partner</a></li>
+                                    <li><a href="#">Agreement</a></li>
+                                    <li><a href="#">Account</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" data-delay="300" data-close-others="true">Resource<span class="fa fa-angle-down dropdown-arrow"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Schema</a></li>
+                                    <li><a href="#">Mapper</a></li>
+                                    <li><a href="#">Transmission</a></li>
+                                    <li><a href="#">Certificate</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" data-delay="300" data-close-others="true">Monitor<span class="fa fa-angle-down dropdown-arrow"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Statistics</a></li>
+                                    <li><a href="#">Message</a></li>
+                                    <li><a href="#">Action Log</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Help</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle dropdown-form-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
+                                <ul class="dropdown-menu dropdown-menu-user">
+                                    <li id="dropdownForm">
+                                        <div class="dropdown-form">
+                                            <form class="form-default form-inline p15">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control search-input" placeholder="Search..." ng-model="fc.searchValue">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-rw btn-primary search-btn" type="button" ng-click="fc.doSearch()">Go!</button>
+                                                    </span>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div ng-view>
+            
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="heading-footer">
+                        <h4>About</h4></div>
+                        <p>EDI as a Service offers a comprehensive set of fully outsourced EDI services that helps companies to take full advantage of their EDI investment. </p>
+                    </div>
+                    <div class="col-sm-4 mg25-xs">
+                        <div class="heading-footer">
+                        <h4>Social Networks</h4></div>
+                        <a class="btn btn-social-icon btn-twitter btn-lg">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-instagram btn-lg">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-facebook btn-lg">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-vimeo btn-lg">
+                            <i class="fa fa-vimeo-square"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-linkedin btn-lg">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-google-plus btn-lg">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-adn btn-lg">
+                            <i class="fa fa-adn"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-bitbucket btn-lg">
+                            <i class="fa fa-bitbucket"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-tumblr btn-lg">
+                            <i class="fa fa-tumblr"></i>
+                        </a>
+                        <a class="btn btn-social-icon btn-flickr btn-lg">
+                            <i class="fa fa-flickr"></i>
+                        </a>
+                    </div>
+                    <div class="col-sm-4 mg25-xs">
+                        <div class="heading-footer">
+                        <h4>Contact us</h4></div>
+                        <p><span class="ion-home footer-info-icons"></span><small class="address"> TianFu Software park ChengDu Newegg- China</small></p>
+                        <p><span class="ion-email footer-info-icons"></span><small class="address"><a href="mailto:eaas@newegg.com">eaas@newegg.com</a></small></p>
+                        <p><span class="ion-ios7-telephone footer-info-icons"></span><small class="address">+123456</small></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <hr class="dark-hr">
+                    <div class="col-sm-11 col-xs-10">
+                        <p class="copyright">© 2015 Newegg inc. All rights reserved. Create by <b>Seven</b>.</p>
+                    </div>
+                    <div class="col-sm-1 col-xs-2 text-right">
+                        <a href="#" class="scroll-top" scroll-to-top>
+                            <div class="footer-scrolltop-holder"><span class="fa fa-arrow-up footer-scrolltop"></span></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="js/bootstrap.js"></script>
+        <script src="pages/home.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>

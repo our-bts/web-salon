@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello,Angular</title>
+</head>
+<body>
+  <h1>The first angular application.</h1>
+  <hr>
+  <section>
+    User name: <input type="text" value="Angular"> <span>Hello,Angular.</span>
+  </section>
+  <script src="jquery-2.1.4.js"></script>
+  <script>
+    $(function(){
+      $('input').on('keyup', function(){
+        var $this = $(this),
+          username = $this.val();
+        $this.next().text('Hello,' + username + '.');
+      });
+    });
+  </script>
+</body>
+</html>
